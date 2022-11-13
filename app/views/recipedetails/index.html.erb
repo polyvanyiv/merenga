@@ -1,0 +1,67 @@
+<h1>Технологічні Карти</h1>
+<br>
+<%=link_to "New", new_recipedetail_path %>
+<br>
+
+
+<ul>
+  <% @recipedetails.each do |recipe| %>
+    <li>
+      <%= recipe.article_id %>
+    </li>
+  <% end %>
+</ul>
+
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+
+<table class="tg">
+  <thead>
+  <tr>
+    <th class="tg-0pky">Назва</th>
+    <th class="tg-0pky">Продукт</th>
+    <th class="tg-0pky">Од. Виміру</th>
+    <th class="tg-0pky">Кількість</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @recipedetails.each do |reciped| %>
+    <tr>
+      <td class="tg-0lax">
+<!--        <a href="<%#= article_path(article) %>">-->
+          <%= reciped.recipe.name %>
+<!--        </a>-->
+      </td>
+      <td class="tg-0lax"><%= reciped.article.name %></td>
+      <td class="tg-0lax"><%= reciped.article.unit %></td>
+      <td class="tg-0lax"><%= reciped.amount %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<ul>
+  <% @recipedetails.each do |recipedetail| %>
+    <li>
+<!--      <a href="<%#= article_path(article) %>">-->
+        <%= recipedetail.article.name %>
+<!--      </a>-->
+    </li>
+  <% end %>
+
+</ul>
+
+<!--<p> <%#= @recipedetails.amount %> </p>-->
+
+<br>
+<%= link_to "Home", articles_path %>

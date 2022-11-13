@@ -1,0 +1,17 @@
+<ul>
+  <% @recipes.each do |recipe| %>
+  <li>
+    <%= link_to recipe.name, recipe %>
+<!--    <a href = "<%# recipe_path(recipe) %>">-->
+     <%#= recipe.name %>
+<!--    </a>-->
+  </li>
+  <% end %>
+</ul>
+
+
+<br>
+<%= link_to "New", new_recipe_path %>
+
+<br>
+<%= link_to "Home", articles_path %>

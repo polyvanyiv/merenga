@@ -1,0 +1,34 @@
+<h1><%= @recipe.name %></h1>
+
+<%= render "form", recipedetail: @recipedetail %>
+
+<br>
+
+<%= form_with url: recipedetails_path, model: @recipedetails do |form| %>
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :article_id %><br>
+    <%= form.collection_select :article_id, Article.order(:name), :id, :name %>
+  </div>
+
+  <div hidden>
+    <%= form.label :recipe_id %>
+    <%#= form.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}, {:disabled => "true"}  %>
+    <%= form.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}  %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<br>
+
+<br>
+<%= link_to "Back", recipes_path %>
+<br>
+<%= link_to "Home", articles_path %>

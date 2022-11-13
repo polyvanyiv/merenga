@@ -1,0 +1,40 @@
+<%= form_with model: article do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% article.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :category %><br>
+    <%= form.select :category, ['Продукт', 'Хозка', 'Пакування'], selected: 'Продукт' %>
+  </div>
+
+  <div>
+    <%= form.label :unit %><br>
+    <%= form.select :unit, ['г', 'мл', 'шт', 'пак'], selected: 'г' %>
+  </div>
+
+<!--  <div>-->
+<!--    <%#= form.label :category %><br>-->
+    <%#= form.text_area :category %>
+    <%# article.errors.full_messages_for(:category).each do |message| %>
+<!--      <div><%#= message %></div>-->
+    <%# end %>
+<!--  </div>-->
+
+<!--  <div>-->
+<!--    <%#= form.label :unit %><br>-->
+    <%#= form.text_area :unit %>
+    <%# article.errors.full_messages_for(:unit).each do |message| %>
+<!--      <div><%#= message %></div>-->
+    <%# end %>
+<!--  </div>-->
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

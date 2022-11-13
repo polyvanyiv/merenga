@@ -1,0 +1,13 @@
+<p><%=@recipe.name %></p>
+
+<%= render "form", recipedetail: @recipedetail %>
+
+
+
+
+<br>
+<%= link_to "Edit", edit_recipe_path %>
+<br>
+<%= link_to "Back", recipes_path %>
+<br>
+<%= link_to "Home", articles_path %>

@@ -1,0 +1,52 @@
+<h1>Articles#index</h1>
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+
+<table class="tg">
+  <thead>
+  <tr>
+    <th class="tg-0pky">Назва</th>
+    <th class="tg-0pky">Категорія</th>
+    <th class="tg-0pky">Од. Виміру</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @articles.each do |article| %>
+   <tr>
+    <td class="tg-0lax">
+      <a href="<%= article_path(article) %>">
+      <%= article.name %>
+      </a>
+    </td>
+    <td class="tg-0lax"><%= article.category %></td>
+    <td class="tg-0lax"><%= article.unit %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="<%= article_path(article) %>">
+        <%= article.name %>
+      </a>
+    </li>
+  <% end %>
+
+  <%= link_to "New Article", new_article_path %>
+
+  <br>
+  <%= link_to "Тех карти", recipes_path %>
+
+<!--  <br>-->
+  <%#= link_to "Тех карти detailed", recipedetails_path %>
+</ul>
