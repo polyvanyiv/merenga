@@ -1,7 +1,37 @@
+<%#= render "form", recipedetail: @recipedetail %>
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+
 <p><%=@recipe.name %></p>
 
-<%= render "form", recipedetail: @recipedetail %>
-
+<table class="tg">
+  <thead>
+  <tr>
+    <th class="tg-0pky">Продукт</th>
+    <th class="tg-0pky">Од. Виміру</th>
+    <th class="tg-0pky">Кількість</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @recipedetail.each do |rd| %>
+    <tr>
+      <td class="tg-0lax"><%= Article.find(rd.article_id).name %></td>
+      <td class="tg-0lax"><%= Article.find(rd.article_id).unit %></td>
+      <td class="tg-0lax"><%= rd.amount %></td>
+      <!--      <td class="tg-0lax"> <%#= button_to 'Видалити', recipedetail_path(rd), method: :delete, params: { aid: rd.article_id, rid: rd.recipe_id  } %> </td>-->
+      <%#= button_to 'Destroy', article_path(@article), method: :delete %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 
 
