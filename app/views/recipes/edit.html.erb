@@ -14,48 +14,67 @@
 
 <br>
 
-<table class="tg">
-  <thead>
-  <tr>
-    <th class="tg-0pky">Продукт</th>
-    <th class="tg-0pky">Од. Виміру</th>
-    <th class="tg-0pky">Кількість</th>
-    <th class="tg-0pky">Дія</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @recipedetail.each do |rd| %>
-    <tr>
-      <td class="tg-0lax"><%= Article.find(rd.article_id).name %></td>
-      <td class="tg-0lax"><%= Article.find(rd.article_id).unit %></td>
-      <td class="tg-0lax"><%= rd.amount %></td>
-      <!--      <td class="tg-0lax"> <%#= button_to 'Видалити', recipedetail_path(rd), method: :delete, params: { aid: rd.article_id, rid: rd.recipe_id  } %> </td>-->
-      <td class="tg-0lax"> <%= button_to 'Видалити', recipedetail_path(rd), method: :delete %> </td>
-      <%#= button_to 'Destroy', article_path(@article), method: :delete %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= form_with url: recipedetail_path, method: "patch", model: @recipedetails do |form| %>
+<%#= form_with url: recipedetails_path, method: :patch, model: @recipedetails do |form| %>
 
-<%= form_with url: recipedetails_path, model: @recipedetails do |form| %>
+  <table class="tg">
+    <thead>
+    <tr>
+      <th class="tg-0pky">Продукт</th>
+      <th class="tg-0pky">Од. Виміру</th>
+      <th class="tg-0pky">Кількість</th>
+      <th class="tg-0pky">Дія</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @recipedetail.each do |rd| %>
+      <tr>
+        <td class="tg-0lax">
+          <%= form.collection_select :article_id, Article.order(:name), :id, :name, {:selected => rd.article_id}  %>
+        </td>
+<!--        <td class="tg-0lax"><%#= Article.find(rd.article_id).name %></td>-->
+        <td class="tg-0lax"><%= Article.find(rd.article_id).unit %></td>
+        <div hidden>
+          <%= form.label :recipe_id %>
+          <%#= form.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}, {:disabled => "true"}  %>
+          <%= form.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}  %>
+        </div>
+
+        <td class="tg-0lax"><%= form.text_field :amount, value:rd.amount %></td>
+<!--        <td class="tg-0lax"><%#= rd.amount %></td>-->
+        <td class="tg-0lax">
+          <%#= button_to 'Оновити', recipedetail_path(rd), params: {article_id: rd.article_id, recipe_id: @recipe.id} , method: :patch %>
+          <%#= button_to 'Оновити', recipedetail_path(rd), params: {amount: :amount}, method: :patch %>
+          <%#= form.submit 'Upd' %>
+          <%= button_to 'Видалити', recipedetail_path(rd), method: :delete %>
+          <%#= form.submit%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+<%= form_with url: recipedetails_path, model: @recipedetails do |form2| %>
   <div>
-    <%= form.label :amount %><br>
-    <%= form.text_field :amount %>
+    <%= form2.label :amount %><br>
+    <%= form2.text_field :amount %>
   </div>
 
   <div>
-    <%= form.label :article_id %><br>
-    <%= form.collection_select :article_id, Article.order(:name), :id, :name %>
+    <%= form2.label :article_id %><br>
+    <%= form2.collection_select :article_id, Article.order(:name), :id, :name %>
   </div>
 
   <div hidden>
-    <%= form.label :recipe_id %>
+    <%= form2.label :recipe_id %>
     <%#= form.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}, {:disabled => "true"}  %>
-    <%= form.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}  %>
+    <%= form2.collection_select :recipe_id, Recipe.order(:name), :id, :name, {:selected => @recipe.id}  %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form2.submit %>
   </div>
 <% end %>
 

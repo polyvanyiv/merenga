@@ -15,6 +15,7 @@
     <th class="tg-0pky">Назва</th>
     <th class="tg-0pky">Категорія</th>
     <th class="tg-0pky">Од. Виміру</th>
+    <th class="tg-0pky">Остання ціна в закупці</th>
   </tr>
   </thead>
   <tbody>
@@ -27,6 +28,7 @@
     </td>
     <td class="tg-0lax"><%= article.category %></td>
     <td class="tg-0lax"><%= article.unit %></td>
+<!--    <td class="tg-0lax"><%#= @articles.getLastPrice %></td>-->
   </tr>
   <% end %>
   </tbody>
@@ -46,6 +48,9 @@
 
   <br>
   <%= link_to "Тех карти", recipes_path %>
+
+  <br>
+  <%= link_to "Закупки", purchases_path %>
 
 <!--  <br>-->
   <%#= link_to "Тех карти detailed", recipedetails_path %>

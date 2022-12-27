@@ -1,0 +1,32 @@
+<%= form_with model: purchase do |form| %>
+
+  <div>
+    <%= form.label :article_id %><br>
+    <%= form.collection_select :article_id, Article.order(:name), :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :store %><br>
+    <%= form.select :store, ['Ашан', 'Селгрос', 'Переоблік'], selected: 'Ашан' %>
+  </div>
+
+  <div>
+    <%= form.label :pricePerUnit, 'Ціна за од.'%><br>
+    <%= form.text_field :pricePerUnit %>
+  </div>
+
+  <div>
+    <%= form.label :weightPerUnit, 'Вага в од.' %><br>
+    <%= form.text_field :weightPerUnit %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>

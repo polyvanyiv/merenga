@@ -1,0 +1,57 @@
+<h1>Закупки</h1>
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+
+# Назва	Дата	Магазин	Сума	Кількість	Ціна за од.	Од. виміру	Вага в од.	Ціна в од. виміру
+
+<table class="tg">
+  <thead>
+  <tr>
+    <th class="tg-0pky">ID</th>
+    <th class="tg-0pky">Назва</th>
+    <th class="tg-0pky">Дата</th>
+    <th class="tg-0pky">Магазин</th>
+    <th class="tg-0pky">Сума</th>
+    <th class="tg-0pky">Кілкість</th>
+    <th class="tg-0pky">Ціна за од.</th>
+    <th class="tg-0pky">Од. виміру</th>
+    <th class="tg-0pky">Вага в од.</th>
+    <th class="tg-0pky">Ціна в од. виміру</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @purchases.each do |p| %>
+    <tr>
+      <td class="tg-0lax"><%= p.id %></td>
+      <td class="tg-0lax"><%= Article.find(p.article_id).name %></td>
+      <td class="tg-0lax"><%= p.updated_at %></td>
+      <td class="tg-0lax"><%= p.store %></td>
+      <td class="tg-0lax"><%= p.pricePerUnit * p.amount %></td>
+      <td class="tg-0lax"><%= p.amount %></td>
+      <td class="tg-0lax"><%= p.pricePerUnit%></td>
+      <td class="tg-0lax"><%= Article.find(p.article_id).unit %></td>
+      <td class="tg-0lax"><%= p.weightPerUnit%></td>
+      <td class="tg-0lax">
+        <%= if Article.find(p.article_id).unit == 'шт'
+        then p.pricePerUnit
+        else
+          p.pricePerUnit/p.weightPerUnit
+        end %>
+      </td>
+<!--      <td class="tg-0lax"><%#= if 1==0 then 'abv' else 'def' end %></td>-->
+<!--      <td class="tg-0lax"><%#= article.category %></td>-->
+<!--      <td class="tg-0lax"><%#= article.unit %></td>-->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New Purchase Order", new_purchase_path %>

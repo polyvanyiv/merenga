@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @lastPrice = Purchase.where("article_id = ?", @article.id).order("created_at DESC").first
   end
 
   def new
@@ -41,6 +42,11 @@ class ArticlesController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
+  #
+  # def getLastPrice
+  #   @article = Article.find(params[:id])
+  #   @lastPrice = Purchase.find_by_article_id(@article.id).order("created_at DESC").limit(1)
+  # end
 
   private
   def article_params
