@@ -1,0 +1,49 @@
+<%= form_with model: sale do |form| %>
+  <div>
+    <%= form.label :recipe_id %><br>
+    <%= form.collection_select :recipe_id, Recipe.order(:name), :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :amount %><br>
+    <%= form.text_field :amount %>
+  </div>
+
+  <div>
+    <%= form.label :orderPlaced %><br>
+    <%= form.date_select :orderPlaced %>
+  </div>
+
+  <div>
+    <%= form.label :orderDelivery %><br>
+    <%= form.date_select :orderDelivery %>
+  </div>
+
+  <div>
+    <%= form.label :clientTmp %><br>
+    <%= form.text_field :clientTmp %>
+  </div>
+
+  <div>
+    <%= form.label :discount %><br>
+    <%= form.text_field :discount %>
+  </div>
+
+  <div>
+    <%= form.label :delivery %><br>
+    <%= form.text_field :delivery %>
+  </div>
+
+  <div>
+    <%= form.label :processed %>
+    <%= form.check_box :processed, {:checked => false}  %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<br>
+<%= link_to "Home", articles_path %>

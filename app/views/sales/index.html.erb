@@ -1,0 +1,78 @@
+<h1>Sales</h1>
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+
+<table class="tg">
+  <thead>
+  <tr>
+    <th class="tg-0pky">ID</th>
+    <th class="tg-0pky">Вироб</th>
+    <th class="tg-0pky">Дата замовлення</th>
+    <th class="tg-0pky">Дата продажу</th>
+    <th class="tg-0pky">Клієнт</th>
+    <th class="tg-0pky">Кількість</th>
+    <th class="tg-0pky">Собівартість</th>
+    <th class="tg-0pky">Ціна за од.</th>
+    <th class="tg-0pky">Знижка (%)</th>
+    <th class="tg-0pky">Доставка</th>
+    <th class="tg-0pky">Сума</th>
+    <th class="tg-0pky">Прибуток</th>
+    <th class="tg-0pky">Оброблено</th>
+    <th class="tg-0pky">Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @sales.each do |sale| %>
+    <%= form_with model: sale do |form| %>
+   <tr>
+    <td class="tg-0lax">
+      <a href="<%= edit_sale_path(sale) %>">
+        <%= sale.id %>
+      </a>
+    </td>
+    <td class="tg-0lax"><%= Recipe.find(sale.recipe_id).name %></td>
+    <td class="tg-0lax"><%= sale.orderPlaced %></td>
+    <td class="tg-0lax"><%= sale.orderDelivery %></td>
+    <td class="tg-0lax"><%= form.text_field :clientTmp, value: sale.clientTmp %></td>
+    <td class="tg-0lax"><%= sale.amount %></td>
+    <td class="tg-0lax"> cost </td>
+    <td class="tg-0lax"> priceperunit </td>
+    <td class="tg-0lax"><%= sale.discount %></td>
+    <td class="tg-0lax"><%= sale.delivery %></td>
+    <td class="tg-0lax">sum</td>
+    <td class="tg-0lax">profit</td>
+    <td class="tg-0lax"><%= sale.processed %></td>
+<!--    <td class="tg-0lax"><%#= button_to "Some Button", :action=> "calcCost"%></td>-->
+    <td class="tg-0lax">
+      <%= form.submit %>
+    </td>
+      <% end %>
+
+     <%#= form_tag add_school_user_path(@user), method: put do -%>
+       <%#= hidden_field_tag :school_id, @school.id -%>
+       <%#= submit_tag 'Add school' -%>
+     <%#- end -%>
+
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+  <%= link_to "New Sale", new_sale_path %>
+
+  <br>
+  <%= link_to "Тех карти", recipes_path %>
+
+  <br>
+  <%= link_to "Закупки", purchases_path %>
+
+<br>
+<%= link_to "Home", articles_path %>

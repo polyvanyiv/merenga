@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recipe: one
+  orderPlaced: 2022-12-27
+  orderDelivery: 2022-12-27
+  'y': 2022-12-27
+  clientTmp: MyString
+  amount: 9.99
+  cost: 9.99
+  price: 9.99
+  discount: 9.99
+  delivery: 9.99
+  sum: 9.99
+  profit: 9.99
+  processed: false
+
+two:
+  recipe: two
+  orderPlaced: 2022-12-27
+  orderDelivery: 2022-12-27
+  'y': 2022-12-27
+  clientTmp: MyString
+  amount: 9.99
+  cost: 9.99
+  price: 9.99
+  discount: 9.99
+  delivery: 9.99
+  sum: 9.99
+  profit: 9.99
+  processed: false
