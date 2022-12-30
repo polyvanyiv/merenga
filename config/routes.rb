@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # POST "/sales?method=calcCost"
   post "sales/calcCost" => "sales#calcCost"
 
-  resources :articles, :recipes, :recipedetails, :purchases, :sales
+  resources :recipes, :recipedetails, :purchases, :sales
+  resources :articles do
+    resources :sale_packages
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

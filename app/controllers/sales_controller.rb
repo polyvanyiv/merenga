@@ -54,6 +54,7 @@ class SalesController < ApplicationController
       amountInRecipe = rd.amount
       tmpCost = latestCostPerUnit * amountInRecipe
       cost = cost + tmpCost
+      #todo: calculate packaging cost, implement inventory + its management, implement decoration cost (with checkboxes), implement composite recipes
     end
     sale.update_attribute("clientTmp", sale.clientTmp + cost.to_s + ", ")
     sale.update_attribute("profit", sale.profit+1)

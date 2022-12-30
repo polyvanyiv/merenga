@@ -1,0 +1,2 @@
+module SalePackagesHelper
+end

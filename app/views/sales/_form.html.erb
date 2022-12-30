@@ -1,4 +1,4 @@
-<%= form_with model: sale do |form| %>
+<%= form_with model: [sale, sale.sale_packages.build] do |form| %>
   <div>
     <%= form.label :recipe_id %><br>
     <%= form.collection_select :recipe_id, Recipe.order(:name), :id, :name %>

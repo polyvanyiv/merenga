@@ -1,4 +1,16 @@
 <h1>Name - <%= @sale.clientTmp %></h1>
 
+<h2>SalePackages</h2>
+<ul>
+  <%= render @sale.sale_packages %>
+</ul>
+<!--<ul>-->
+  <%# @sale.sale_packages.each do |sp| %>
+<!--  <li>-->
+    <%#= sp.amount.to_s + " - " + Article.find(sp.article_id).name %>
+<!--  </li>-->
+  <%#end %>
+<!--</ul>-->
+
 <br>
 <%= link_to "Продажі", sales_path %>
