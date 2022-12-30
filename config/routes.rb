@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # POST "/sales?method=calcCost"
   post "sales/calcCost" => "sales#calcCost"
 
-  resources :recipes, :recipedetails, :purchases, :sales
-  resources :articles do
+  resources :articles, :recipes, :recipedetails, :purchases
+  resources :sales do
     resources :sale_packages
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
